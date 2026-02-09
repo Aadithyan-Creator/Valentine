@@ -10,6 +10,7 @@
         padding: 0;
         box-sizing: border-box;
       }
+
       body {
         min-height: 100vh;
         font-family: "Segoe UI", system-ui;
@@ -20,7 +21,6 @@
         background: linear-gradient(135deg, #1e3c72, #2a5298, #0a2c5a);
       }
 
-      /* Floating background images container */
       .bg-images {
         position: fixed;
         inset: 0;
@@ -34,69 +34,67 @@
         will-change: transform;
       }
 
-      /* Glassmorphic card */
+      /* ↓ Card slightly reduced */
       .card {
-        width: 90%;
-        max-width: 420px;
-        padding: 3rem 2.5rem;
+        width: 92%;
+        max-width: 440px;
+        padding: 1rem 2.4rem;
         background: rgba(137, 185, 237, 0.25);
         backdrop-filter: blur(25px);
-        border-radius: 28px;
+        border-radius: 30px;
         text-align: center;
         position: relative;
         z-index: 10;
         box-shadow: 0 22px 70px rgba(60, 137, 221, 0.35);
         border: 1px solid rgba(0, 180, 255, 0.3);
-        transition: 1s ease;
       }
 
-      /* title/subtitle */
       h1 {
         font-size: clamp(2rem, 5vw, 3rem);
         background: linear-gradient(90deg, #00c6ff, #0072ff, #0047b3);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.3rem;
         letter-spacing: 0.5px;
         text-shadow: 0 0 12px rgba(0, 180, 255, 0.25);
       }
+
       .subtitle {
         font-size: clamp(1rem, 2.5vw, 1.2rem);
         color: #b3e5fc;
         opacity: 0.85;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
         text-shadow: 0 0 8px #00b0ff;
       }
 
-      /* Central image heart beat animation */
+      /* ↓ Base image size unchanged */
       .central-image {
-        width: 100px;
-        height: 100px;
-        margin: 1rem auto;
+        width: 140px;
+        height: 140px;
+        margin: 1.6rem auto 1.2rem;
         object-fit: contain;
-        transition: transform 0.3s ease;
-      }
-      .central-image.beat {
-        animation: beat 1s infinite;
-      }
-      @keyframes beat {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        25% {
-          transform: scale(1.15);
-        }
-        50% {
-          transform: scale(1);
-        }
-        75% {
-          transform: scale(1.15);
-        }
+        display: block;
+        transition: transform 0.4s ease;
       }
 
-      /* Buttons */
+      /* ↓ Increased size after Yes */
+      .central-image.enlarged {
+        transform: scale(1.25);
+      }
+
+      .quote {
+        margin: 1rem auto 1.6rem;
+        font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+        line-height: 1.55;
+        max-width: 90%;
+        background: linear-gradient(90deg, #9adfff, #c7f0ff, #8fd3ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0.95;
+      }
+
       .buttons {
         display: flex;
         justify-content: center;
@@ -104,6 +102,7 @@
         margin-top: 2.5rem;
         flex-wrap: wrap;
       }
+
       button {
         font-size: clamp(1rem, 2.5vw, 1.2rem);
         padding: 0.95rem 2.8rem;
@@ -111,35 +110,26 @@
         border-radius: 999px;
         cursor: pointer;
         box-shadow: 0 8px 28px rgba(0, 123, 255, 0.28);
-        transition:
-          transform 0.25s ease,
-          box-shadow 0.25s ease,
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
           background 0.4s ease;
         backdrop-filter: blur(15px);
         color: #fff;
       }
+
       button:hover {
         transform: scale(1.06);
         box-shadow: 0 14px 35px rgba(0, 123, 255, 0.4);
       }
+
       #yes {
         background: linear-gradient(135deg, #00c6ff, #0072ff, #0047b3);
       }
+
       #no {
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(0, 180, 255, 0.5);
       }
 
-      @media (max-width: 480px)  {
-      }
-
-      @media (max-width: 768px)  {
-      }
-
-      @media (max-width: 1024px)  {
-      }
-
-      /* Hint */
       .hint {
         margin-top: 1.5rem;
         opacity: 0.85;
@@ -148,7 +138,6 @@
         text-shadow: 0 0 8px #00b0ff;
       }
 
-      /* Message after yes */
       .message {
         margin-top: 2rem;
         font-size: clamp(1rem, 2.5vw, 1.5rem);
@@ -163,27 +152,23 @@
         transform: none;
       }
 
-      /* Burst images after yes */
       .burst {
         position: fixed;
         pointer-events: none;
         z-index: 1000;
         width: 30px;
         height: 30px;
-        transition:
-          transform 2s ease-out,
-          opacity 2s ease-out;
+        transition: transform 2s ease-out, opacity 2s ease-out;
       }
     </style>
   </head>
+
   <body>
-    <!-- Floating background images -->
     <div class="bg-images" id="bgImages"></div>
 
     <div class="card" id="card">
       <h1 id="title">Will you be<br />my Valentine?</h1>
 
-      <!-- Configurable central image placeholder -->
       <img
         src="rose2.png"
         class="central-image"
@@ -191,15 +176,21 @@
         alt="Valentine Image"
       />
 
+      <div class="quote">
+        You changed my life for the better. Loving you feels natural, peaceful, and real.
+      </div>
+
       <div class="subtitle" id="subtitle">A question from the heart…</div>
 
       <div class="buttons" id="buttons">
         <button id="yes">Yes</button>
         <button id="no">No 😿</button>
       </div>
+
       <div class="hint" id="hint">
         The “No” button is shy — try to catch it.
       </div>
+
       <div class="message" id="msg">You’re my Valentine forever</div>
     </div>
 
@@ -210,7 +201,6 @@
       const msg = document.getElementById("msg");
       const centerImg = document.getElementById("centerImg");
 
-      // Floating background images logic
       const bgImgSources = [
         "rose1.png",
         "rose6.png",
@@ -219,36 +209,31 @@
         "rose5.png",
       ];
       const bgContainer = document.getElementById("bgImages");
-      const numImages = 50; // More floating images
+      const numImages = 50;
 
       for (let i = 0; i < numImages; i++) {
         const img = document.createElement("img");
         img.src = bgImgSources[Math.floor(Math.random() * bgImgSources.length)];
         bgContainer.appendChild(img);
 
-        function animateImage() {
-          const startX = Math.random() * (window.innerWidth - 60);
-          const speed = 3000 + Math.random() * 5000; // 30-50s duration
-          img.style.left = startX + "px";
-          img.style.top = window.innerHeight + "px";
-          img.animate(
-            [
-              { transform: `translateY(0) rotate(0deg)` },
-              {
-                transform: `translateY(-${window.innerHeight + 90}px) rotate(360deg)`,
-              },
-            ],
+        const startX = Math.random() * (window.innerWidth - 60);
+        const speed = 3000 + Math.random() * 5000;
+        img.style.left = startX + "px";
+        img.style.top = window.innerHeight + "px";
+
+        img.animate(
+          [
+            { transform: "translateY(0) rotate(0deg)" },
             {
-              duration: speed,
-              easing: "linear",
-              iterations: Infinity,
+              transform: `translateY(-${
+                window.innerHeight + 90
+              }px) rotate(360deg)`,
             },
-          );
-        }
-        animateImage();
+          ],
+          { duration: speed, easing: "linear", iterations: Infinity }
+        );
       }
 
-      // Move No button logic
       let canMove = true;
       function moveNo() {
         if (!canMove) return;
@@ -274,13 +259,12 @@
           y < cardRect.top + 10 ||
           (y + h > cardRect.bottom - 10 && tries < 150)
         );
-        x = Math.max(minX, Math.min(x, maxX));
-        y = Math.max(minY, Math.min(y, maxY));
         noBtn.style.position = "fixed";
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
         setTimeout(() => (canMove = true), 150);
       }
+
       document.addEventListener("mousemove", (e) => {
         const r = noBtn.getBoundingClientRect();
         const cx = r.left + r.width / 2;
@@ -289,7 +273,6 @@
         if (d < 140) moveNo();
       });
 
-      // Burst/falling images for Yes click
       const burstImages = [
         "rose1.png",
         "rose2.png",
@@ -297,19 +280,19 @@
         "rose4.png",
         "rose5.png",
       ];
+
       yesBtn.onclick = () => {
         document.getElementById("buttons").style.display = "none";
         document.getElementById("hint").style.display = "none";
         document.getElementById("title").textContent = "My Heart is Yours";
         document.getElementById("subtitle").textContent =
-          "Our hearts beat as one";
-        centerImg.src = "heart.png";
-        centerImg.classList.add("beat"); // heart beats
+          "You are my greatest blessing. With you, love feels secure, gentle, and honest";
+
+        centerImg.src = "gg.png";
+        centerImg.classList.add("enlarged");
         msg.classList.add("show");
 
-        // Gentle falling petals/hearts
-        const numPetals = 80;
-        for (let i = 0; i < numPetals; i++) {
+        for (let i = 0; i < 80; i++) {
           const h = document.createElement("img");
           h.className = "burst";
           h.src = burstImages[Math.floor(Math.random() * burstImages.length)];
@@ -327,14 +310,13 @@
             [
               { transform: `translate(0,0) rotate(${rotate}deg)`, opacity: 1 },
               {
-                transform: `translate(${driftX}px, ${window.innerHeight + 50}px) rotate(${rotate + 360}deg)`,
+                transform: `translate(${driftX}px, ${
+                  window.innerHeight + 50
+                }px) rotate(${rotate + 360}deg)`,
                 opacity: 0.8,
               },
             ],
-            {
-              duration: 8000 + Math.random() * 4000,
-              easing: "linear",
-            },
+            { duration: 8000 + Math.random() * 4000, easing: "linear" }
           );
 
           setTimeout(() => h.remove(), 12000);
