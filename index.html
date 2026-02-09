@@ -85,7 +85,8 @@
 
       .quote {
         margin: 1rem auto 1.6rem;
-        font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+        font-weight: bold;
+        font-size: clamp(1rem, 2.8vw, 1.50rem);
         line-height: 1.55;
         max-width: 90%;
         background: linear-gradient(90deg, #9adfff, #c7f0ff, #8fd3ff);
@@ -177,10 +178,10 @@
       />
 
       <div class="quote">
-        You changed my life for the better. Loving you feels natural, peaceful, and real.
+        A small token of affection — a moment to call our own.
       </div>
 
-      <div class="subtitle" id="subtitle">A question from the heart…</div>
+      <div class="subtitle" id="subtitle"></div>
 
       <div class="buttons" id="buttons">
         <button id="yes">Yes</button>
@@ -285,9 +286,15 @@
         document.getElementById("buttons").style.display = "none";
         document.getElementById("hint").style.display = "none";
         document.getElementById("title").textContent = "My Heart is Yours";
+        // replace the subtitle (text under the image) with the user's paragraph
         document.getElementById("subtitle").textContent =
-          "You are my greatest blessing. With you, love feels secure, gentle, and honest";
+          "You are the best thing that happened to me, and I don't say that lightly. You walked into my life and made everything feel softer, calmer, and more meaningful. With you, love doesn't feel loud or rushed—it feels steady, safe, and real. I find comfort in you, strength in you, and happiness in the simple fact that you're mine. Every day, I'm grateful that it's you I get to care for, choose, and grow with.";
 
+        // hide the original question-line so it doesn't repeat after clicking yes
+        const q = document.querySelector(".quote");
+        if (q) q.style.display = "none";
+
+        // replace central image (placeholder; you can provide your image file named 'gg.png' or change this)
         centerImg.src = "gg.png";
         centerImg.classList.add("enlarged");
         msg.classList.add("show");
